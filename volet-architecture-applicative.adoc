@@ -247,7 +247,7 @@ Si l'application est particulièrement complexe, faire un schéma par chaîne de
 Utiliser comme ID des flux une simple séquence non signifiante (1, 2, ..., n).
 Les flux sont logiques et non techniques (par exemple, on peut représenter un flux HTTP direct entre deux composants alors qu'en réalité, il passe par un répartiteur de charge intermédiaire). Ce niveau de détail sera donné dans le volet infrastructure. 
 
-Pour chaque flux, donner le protocole, un attribut synchrone/asynchrone, un attribut lecture/écriture/exécution et une description pour que le schéma soit auto-porteur.
+Pour chaque flux, donner le protocole, un attribut synchrone/asynchrone, un attribut lecture/écriture/exécution et une description pour que le schéma soit autoFporteur.
 ====
 
 
