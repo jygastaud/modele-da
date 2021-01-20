@@ -201,7 +201,7 @@ Exemple : <disponibilité datacenter> x <plage de fonctionnement effective> x <d
 
 [TIP]
 ====
-PRA (Plan de Reprise d'Activité) comme PCA (Plan de Continuité d'Activité) répondent à un risque de catastrophe sur le SI (catastrophe naturelle, accident industriel, incendie...). Un PRA permet de reprendre l’activité suite à une catastrophe après une certaine durée de restauration. Il exige au minium un doublement du datacenter. 
+PRA (Plan de Reprise d'Activité) comme PCA (Plan de Continuité d'Activité) répondent à un risque de catastrophe sur le SI (catastrophe naturelle, accident industriel, incendie...). Un PRA permet de reprendre l’activité suite à une catastrophe après une certaine durée de restauration. Il exige au minimum un doublement du datacenter. 
 
 Un PCA permet de poursuivre les activités critiques de l’organisation (en général dans un mode dégradé) sans interruption notable, voir la norme ISO 22301. Ce principe est réservé aux organisations très matures car il exige des dispositifs techniques coûteux et complexes (filesystems distribués et concurrents par exemple).
 
@@ -214,7 +214,7 @@ Note 2: la gestion des catastrophes est un sujet très complexe. C'est l'un des 
 Décrire entre autres :
 
 * Les matériels redondés dans le second datacenter, nombre de serveurs de spare, capacité du datacenter de secours par rapport au datacenter nominal.
-* Pour un PRA, les dispositifs de restauration (OS, données, applications) prévues.
+* Pour un PRA, les dispositifs de restauration (OS, données, applications) prévus.
 * Pour un PRA, donner le Recovery Time Objective (durée maximale admissible de rétablissement en heures) et le Recovery Point Objective  (durée maximale admissible de données perdues en heures) de l’organisation.
 * Pour un PCA les dispositifs de réplication de données (synchrone ? fil de l’eau ? Combien de transactions peuvent-être perdues ?).
 * Présenter la politique de failback (réversibilité) : doit-on rebasculer vers le premier datacenter ? Comment ?
@@ -364,15 +364,15 @@ Nous listons ici les exigences de disponibilité. Les mesures techniques permett
 
 Les informations données ici serviront d'entrants au SLA de l’application.
 
-Attention à bien cadrer ces exigences car un porteur de projet a souvent tendance à demander une disponibilité très élevée sans toujours se rendre compte des implications. Le coût et la complexité de la solution augmente exponentiellement avec le niveau de disponibilité exigé. 
+Attention à bien cadrer ces exigences car un porteur de projet a souvent tendance à demander une disponibilité très élevée sans toujours se rendre compte des implications. Le coût et la complexité de la solution augmentent exponentiellement avec le niveau de disponibilité exigé. 
 
 L’architecture physique, technique voire logicielle change complètement en fonction du besoin de disponibilité (clusters d’intergiciels voire de bases de données, redondances matériels coûteuses, architecture asynchrone, caches de session, failover ...). 
 
 Ne pas oublier également les coûts d’astreinte très importants si les exigences sont très élevées. De la pédagogie et un devis permettent en général de modérer les exigences.
 
-On estime en général que la haute disponibilité (HA) commence à deux neufs (99%), c'est à dire environ 90h d'indisponibilité par an.
+On estime en général que la haute disponibilité (HA) commence à deux neufs (99%), c'est-à-dire environ 90h d'indisponibilité par an.
 
-Donner la disponibilité demandé par plage.
+Donner la disponibilité demandée par plage.
 
 La disponibilité exigée ici devra être en cohérence avec les <<Contraintes sur la disponibilité>> du SI.
 ====
@@ -480,11 +480,11 @@ Exemple 1 : les dossiers de plus de six mois seront purgées (après archivage)
 
 === Exigences de déploiements et de mise à jour
 
-==== Coté serveur
+==== Côté serveur
 
 [TIP]
 ====
-Préciser ici comment l’application devra être déployée coté serveur. 
+Préciser ici comment l’application devra être déployée côté serveur. 
 
 Par exemple :
 
@@ -493,25 +493,25 @@ Par exemple :
 * Comment sont appliquées les mises jour ?
 ====
 
-==== Coté client
+==== Côté client
 
 [TIP]
 ====
-Préciser ici comment l’application devra être déployée coté client :
+Préciser ici comment l’application devra être déployée côté client :
 
 * Si l’application est volumineuse (beaucoup de JS ou d’images par exemple), risque-t-on un impact sur le réseau ?
 * Une mise en cache de proxy locaux est-elle à prévoir ?
 * Des règles de firewall ou QoS sont-elles à prévoir ?
 
-Coté client, pour une application Java :
+Côté client, pour une application Java :
 
 * Quel version du JRE est nécessaire sur les clients ?
 
-Coté client, pour une application client lourd :
+Côté client, pour une application client lourd :
 
 * Quel version de l’OS est supportée ?
 * Si l’OS est Windows, l’installation passe-t-elle par un outil de déploiement (Novell ZENWorks par exemple) ? l’application vient-elle avec un installeur type Nullsoft ? Affecte-t-elle le système (variables d’environnements, base de registre…) ou est-elle en mode portable (simple zip) ?
-* Si l’OS est Linux, l’application doit-elle fournie en tant que paquet? 
+* Si l’OS est Linux, l’application doit-elle être fournie en tant que paquet? 
 * Comment sont appliquées les mises jour ?
 ====
 
@@ -590,7 +590,7 @@ Nous regroupons les dispositifs de disponibilité en quatre grandes catégories 
 * Dispositifs de supervision (technique et applicative) permettant de détecter au plus tôt les pannes et donc de limiter le MTDT (temps moyen de détection).
 * Dispositifs organisationnels : 
 ** la présence humaine (astreintes, heures de support étendues...) qui permet d'améliorer le MTTR (temps moyen de résolution) et sans laquelle la supervision est inefficiente ;
-** La qualité de la gestion des incidents (voir les bonnes pratiques ITIL), par exemple un workflow de résolution d'incident est-il prévu ? si oui, quel est sa complexité ? sa durée de mise en œuvre ? si elle nécessite par exemple plusieurs validations hiérarchiques, la présence de nombreux exploitants n'améliore pas forcement le MTTR.
+** La qualité de la gestion des incidents (voir les bonnes pratiques ITIL), par exemple un workflow de résolution d'incident est-il prévu ? si oui, quel est sa complexité ? sa durée de mise en œuvre ? si elle nécessite par exemple plusieurs validations hiérarchiques, la présence de nombreux exploitants n'améliore pas forcément le MTTR.
 * Dispositifs de redondance technique (clusters, RAID...) qu'il ne faut pas surestimer si les dispositifs précédents sont insuffisants.
 * Dispositifs de restauration de données : la procédure de restauration est-t-elle bien définie ? testée ? d'une durée compatible avec les exigences de disponibilité ? C'est typiquement utile dans le cas de perte de données causée par une fausse manipulation ou bug dans le code : il faut alors arrêter l'application et dans cette situation, pouvoir restaurer rapidement la dernière sauvegarde améliore grandement le MTTR.
 
@@ -607,8 +607,8 @@ Rappels sur les principes de disponibilité :
 * Le niveau de redondance d'un dispositif peut s'exprimer avec la notion suivante (avec N, le nombre de dispositifs assurant un fonctionnement correct en charge) : 
 
 ** N : aucune redondance (exemple : il faut deux alimentation pour le serveur, si une tombe, le serveur s'arrête)
-** N+1 : un composant de rechange est disponible (mais pas forcement actif), on peut supporter la panne d'un matériel (exemple : on a une alimentation de spare disponible).
-** 2N : le système est entièrement redondé (mais les composants de remplacement ne sont pas forcement actifs) et peut supporter la perte de la moitié des composants (exemple : on dispose de quatre alimentations)
+** N+1 : un composant de rechange est disponible (mais pas forcément actif), on peut supporter la panne d'un matériel (exemple : on a une alimentation de spare disponible).
+** 2N : le système est entièrement redondé (mais les composants de remplacement ne sont pas forcément actifs) et peut supporter la perte de la moitié des composants (exemple : on dispose de quatre alimentations)
 ====
 [TIP]
 ==== 
@@ -641,11 +641,11 @@ Une solution de failover peut être décrite par les attributs suivants :
 ** dans un cluster dit "N+1", on bascule vers un nœud passif qui devient actif et le restera (le nœud en panne une fois réparé pourra devenir le nouveau serveur de secours). Si un serveur cible ne tiendrait pas seul la charge, on prévoit plusieurs serveurs passifs (cluster dit "N+M") ;
 ** dans un cluster "N-to-1", on rebasculera (failback) sur le serveur qui était tombé en panne une fois réparé et le serveur basculé redeviendra le serveur de secours ;
 ** dans un cluster N-to-N (architecture en voie de démocratisation avec le cloud de type PaaS comme App-Engine ou CaaS comme Kubernetes ou Rancher) : on distribue les applications du nœud en panne vers d'autres nœuds actifs (le cluster ayant été dimensionné en prévision de cette éventuelle surcharge).
-* Transparent via à vis de l’appelant ou pas ? En général, les requêtes pointant vers un serveur dont la panne n'a pas encore été détectée tombent en erreur (en timeout la plupart du temps). Certains dispositifs ou architectures de FT (tolérance de panne) permettent d'assurer que le client n'en aura pas conscience ;
+* Transparent vis-à-vis de l’appelant ou pas ? En général, les requêtes pointant vers un serveur dont la panne n'a pas encore été détectée tombent en erreur (en timeout la plupart du temps). Certains dispositifs ou architectures de FT (tolérance de panne) permettent d'assurer que le client n'en aura pas conscience ;
 * Quelle solution de détection de panne ? 
 ** les répartiteurs de charge utilisent des sondes (health check) très variées (requêtes bouchonnées, analyse du CPU, des logs, etc...) vers les nœuds qu'ils contrôlent ; 
 ** les détections de panne des clusters actifs/passifs fonctionnent la plupart du temps par écoute des palpitations (heartbeat) du serveur actif par le serveur passif, par exemple via des requêtes multicast UDP dans le protocole VRRP utilisé par keepalived.
-* Quelle délai de détection de la panne ? il convient de paramétrer correctement (le plus court possible sans dégradation de performance) les solutions de détection de panne pour limiter la durée de failover.
+* Quel délai de détection de la panne ? il convient de paramétrer correctement (le plus court possible sans dégradation de performance) les solutions de détection de panne pour limiter la durée de failover.
 * Quelle pertinence de la détection ? le serveur en panne est-il *vraiment* en panne ? un mauvais paramétrage peut provoquer une indisponibilité totale d'un cluster alors que les nœuds sont sains. 
 ====
 [TIP]
@@ -653,10 +653,10 @@ Une solution de failover peut être décrite par les attributs suivants :
 Quelques mots sur les répartiteurs de charge :
 
 * Un répartiteur de charge (Load Balancer = LB) est une brique obligatoire pour un cluster actif/actif.
-* Dans le cas des clusters, une erreur classique est de créer un SPOF au niveau du répartiteur de charge. On va alors diminuer la disponibilité totale du système au lieu de l'améliorer. Dans la plupart des clusters à vocation de disponibilité (et pas seulement de performance), il faut redonder le répartiteur lui-même en mode actif/passif (et évidemment pas actif/actif sinon, il faudrait un "répartiteur de répartiteurs"). Le répartiteur passif doit surveiller à fréquence élevée le répartiteur actif et le replacer dès qu'il tombe (les requêtes arrivant au LB en panne avant la bascule sont en erreur).
+* Dans le cas des clusters, une erreur classique est de créer un SPOF au niveau du répartiteur de charge. On va alors diminuer la disponibilité totale du système au lieu de l'améliorer. Dans la plupart des clusters à vocation de disponibilité (et pas seulement de performance), il faut redonder le répartiteur lui-même en mode actif/passif (et évidemment pas actif/actif sinon, il faudrait un "répartiteur de répartiteurs"). Le répartiteur passif doit surveiller à fréquence élevée le répartiteur actif et le remplacer dès qu'il tombe (les requêtes arrivant au LB en panne avant la bascule sont en erreur).
 * Il est crucial de configurer correctement et à fréquence suffisante les tests de vie (heathcheck) des nœuds vers lesquels le répartiteur distribue la charge car sinon, le répartiteur va continuer à envoyer des requêtes vers des nœuds tombés ou en surcharge.
 * Certains LB avancés (exemple: option redispatch de HAProxy) permettent la transparence vis à vis de l'appelant en configurant des rejeux vers d'autres nœuds en cas d'erreur ou timeout et donc d'améliorer la tolérance de panne puisqu'on évite de retourner une erreur à l'appelant pendant la période de pré-détection de la panne.
-* Lisser la charge entre les nœuds et ne pas forcement se contenter de round robin. Un algorithme simple est le LC (Least Connection) permettant au répartiteur de privilégier les nœuds les moins chargés, mais il existe bien d'autres algorithmes plus ou moins complexes (systèmes de poids par nœud ou de combinaison charge + poids par exemple).
+* Lisser la charge entre les nœuds et ne pas forcément se contenter de round robin. Un algorithme simple est le LC (Least Connection) permettant au répartiteur de privilégier les nœuds les moins chargés, mais il existe bien d'autres algorithmes plus ou moins complexes (systèmes de poids par nœud ou de combinaison charge + poids par exemple).
 * Dans le monde Open Source, voir par exemple LVS + keepalived ou HAProxy + keepalived.
 
 ====
@@ -676,7 +676,7 @@ Pour disposer d'une tolérance de panne transparente (le niveau de disponibilit�
 Attention à bien qualifier les exigences avant de construire une architecture FT car en général ces solutions :
 
 * Complexifient l'architecture et la rendent donc moins robuste et plus coûteuse à construire, tester, exploiter.
-* Peuvent dégrader les performances : les solutions de disponibilité et de performance vont en général dans le même sens (par exemple, un cluster de machines stateless va diviser la charge par le nombre de nœuds et dans le même temps, la disponibilité augmente), mais quelque fois, disponibilité et performance peuvent être antagonistes : dans le cas d'une architecture stateful, typiquement gérant les sessions HTTP avec un cache distribué (type Infinispan répliqué en mode synchrone ou un REDIS avec persistance sur le master), toute mise à jour transactionnelle de la session ajoute un surcoût lié à la mise à jour et la réplication des caches, ceci pour assurer le failover. En cas de plantage d'un des nœuds, l'utilisateur conserve sa session à la requête suivante et n'a pas à se reconnecter, mais à quel coût ? 
+* Peuvent dégrader les performances : les solutions de disponibilité et de performance vont en général dans le même sens (par exemple, un cluster de machines stateless va diviser la charge par le nombre de nœuds et dans le même temps, la disponibilité augmente), mais quelquefois, disponibilité et performance peuvent être antagonistes : dans le cas d'une architecture stateful, typiquement gérant les sessions HTTP avec un cache distribué (type Infinispan répliqué en mode synchrone ou un REDIS avec persistance sur le master), toute mise à jour transactionnelle de la session ajoute un surcoût lié à la mise à jour et la réplication des caches, ceci pour assurer le failover. En cas de plantage d'un des nœuds, l'utilisateur conserve sa session à la requête suivante et n'a pas à se reconnecter, mais à quel coût ? 
 * Peuvent même dégrader la disponibilité car tous les nœuds sont fortement couplés. Une mise à jour logicielle par exemple peut imposer l'arrêt de l'ensemble du cluster.
 ====
 
@@ -781,7 +781,7 @@ Lister ici OS, bases de données, MOM, serveurs d'application, etc...
 ====
 Lister ici l'intégralité des flux techniques utilisés par l'application. Les ports d’écoute sont précisés. On détaille aussi les protocoles d'exploitation (JMX ou SNMP par exemple). 
 
-Dans certaines organisions, cette matrice sera trop détaillée pour un dossier d'architecture et sera maintenue dans un document géré par les intégrateurs ou les exploitants.
+Dans certaines organisations, cette matrice sera trop détaillée pour un dossier d'architecture et sera maintenue dans un document géré par les intégrateurs ou les exploitants.
 
 Il n'est pas nécessaire de faire référence aux flux applicatifs car les lecteurs ne recherchent pas les mêmes informations. Ici, les exploitants ou les intégrateurs recherchent l’exhaustivité des flux à fin d'installation et de configuration des pare-feu par exemple.
 
@@ -839,7 +839,7 @@ Néanmoins, les analyses et solutions d'écoconception peuvent être spécifique
 * Héberger ses serveurs dans un datacenter performant. Les fournisseurs de cloud proposent en général des datacenters plus performants que on-premises. L'unité de comparaison est ici le PUE (Power Usage Effectiveness), ratio entre l’énergie consommée par le datacenter et l’énergie effectivement utilisée par les serveurs (donc hors refroidissement et dispositifs externes). OVH propose par exemple des datacenter avec un PUE de 1.2 en 2017 contre 2.5 en moyenne. 
 * Néanmoins :
 ** vérifier l'origine de l'énergie (voir par exemple les analyses de Greenpeace en 2017 sur http://www.clickclean.org[l’utilisation d’énergie issue du charbon et du nucléaire] par Amazon pour son cloud AWS) ;
-** garder en tête que l'énergie consommée par l'application coté client et réseau est très supérieure à celle utilisée coté serveur (par exemple, on peut estimer qu'un serveur consommant à peine plus qu'une station de travail suffit à plusieurs milliers voire dizaines de milliers d'utilisateurs). La réduction énergétique passe aussi par un allongement de la durée de vie des terminaux et l'utilisation de matériel plus sobre.
+** garder en tête que l'énergie consommée par l'application côté client et réseau est très supérieure à celle utilisée côté serveur (par exemple, on peut estimer qu'un serveur consommant à peine plus qu'une station de travail suffit à plusieurs milliers voire dizaines de milliers d'utilisateurs). La réduction énergétique passe aussi par un allongement de la durée de vie des terminaux et l'utilisation de matériel plus sobre.
 ====
 ====
 Exemple 1 : la mise en place d'un cache Varnish devant notre CMS reduira de 50% le nombre de construction de pages dynamiques PHP et permettra l'économie de deux serveurs.
@@ -893,9 +893,9 @@ Exemple 2 : un throttling de 100 requêtes par source et par minute sera mis en 
 Décrire ici les différents timeouts mis en œuvre sur les chaînes de liaison. Garder en tête que dans une chaîne de liaison allant du client à la persistance, les timeouts devraient diminuer au fur et à mesure qu'on avance dans 
 la chaîne de liaison (exemple: 10 secs sur le Reverse proxy , 8 secs sur le endpoint REST, 5 secs sur la base de donnée). 
 
-En effet, dans le cas contraire, un composant technique peut continuer à traiter une requête alors que son composant appelant a déjà abandonné, ce qui pose à la fois des problèmes de gaspillage de ressource mais surtout des effets difficile à prévoir. 
+En effet, dans le cas contraire, un composant technique peut continuer à traiter une requête alors que son composant appelant a déjà abandonné, ce qui pose à la fois des problèmes de gaspillage de ressource mais surtout des effets difficiles à prévoir. 
 
-Éviter également d'utiliser la même valeur dans tous les composants techniques pour éviter les effets inattendus lié à la concomitance des timeouts.
+Évitez également d'utiliser la même valeur dans tous les composants techniques pour éviter les effets inattendus lié à la concomitance des timeouts.
 
 ====
 
@@ -918,7 +918,7 @@ Exemple :
 
 [TIP]
 ====
-Lister ici les grands principes d’exploitation de la solution. Les détails (filesystems sauvegardés, plan de production, planification des traitements...) seront consigné dans un DEX (Dossier d’EXploitation) séparé. 
+Lister ici les grands principes d’exploitation de la solution. Les détails (filesystems sauvegardés, plan de production, planification des traitements...) seront consignés dans un DEX (Dossier d’EXploitation) séparé. 
 
 Si cette application reste dans le standard de l’organisation, se référer simplement à un dossier commun.
 ====
@@ -956,7 +956,7 @@ Inverse exact du démarrage
 ====
 Lister de façon macroscopique (le DEX détaillera le plan de production précis) :
 
-* Les batchs ou famille de batchs et leurs éventuelles inter-dépendances. Préciser si un ordonnanceur sera utilisé.
+* Les batchs ou famille de batchs et leurs éventuelles interdépendances. Préciser si un ordonnanceur sera utilisé.
 * Les traitements internes (tâches de nettoyage / bonne santé) du système qui ne remplissent uniquement des rôles techniques (purges, reconstruction d'index, suppression de données temporaires...)
 ====
 ====
@@ -1000,7 +1000,7 @@ Donner la politique générale de sauvegarde. Elle doit répondre aux <<Exigence
 * Comment se fait le bilan de la sauvegarde ? par courriel ? où sont les logs ?
 * Où sont stockées les sauvegardes ? (idéalement le plus loin possible du système sauvegardé tout en permettant une restauration dans un temps compatible avec les exigences de disponibilité).
 * Qui accède physiquement aux sauvegardes et à ses logs ? à la clé de chiffrement ? (penser aux exigences de confidentialité).
-* Des procédures de contrôle de sauvegarde et de test de restauration sont-il prévus ? (prévoir un test de restauration une fois par an minimum).
+* Des procédures de contrôle de sauvegarde et de test de restauration sont-ils prévus ? (prévoir un test de restauration une fois par an minimum).
 
 Il est conseillé : 
 
@@ -1065,7 +1065,7 @@ Exemple 2 : les logs seront échappés à leur création via la méthode `String
 ====
 La supervision est un pilier central de la disponibilité en faisant diminuer drastiquement le MTTD (temps moyen de détection de la panne). 
 
-Idéalement, elle ne sera pas uniquement réactive mais également proactive (detection des prémices).
+Idéalement, elle ne sera pas uniquement réactive mais également proactive (détection des prémices).
 
 Les métriques sont des mesures brutes (% CPU, taille FS, taille d'un pool...) issues de sondes système, middleware ou applicatives. 
 
@@ -1089,7 +1089,7 @@ Exemple : on mesura le % de wait io et la charge serveur.
 
 [TIP]
 ====
-Lister les métriques applicatives (développés en interne). lls peuvent être techniques ou fonctionnels :
+Lister les métriques applicatives (développées en interne). lls peuvent être techniques ou fonctionnels :
 * Nombre de requêtes d'accès à un écran.
 * Nombre de contrats traités dans l'heure.
 * ...
@@ -1175,7 +1175,7 @@ Suit-on les performances de l'application en production ? Cela permet :
 
 Il existe trois grandes familles de solutions :
 
-* Les APM (Application Performance Monitoring) : outils qui injectent des sondes sans impact applicatifs, qui les collectent et les restituent (certains reconstituent même les chaînes de liaison complètes via des identifiants de corrélations injectés lors des appels distribués). Exemple : Oracle Enterprise Manager, Oracle Mission Control, Radware, BMC APM, Dynatrace , Pinpoint en OpenSource ...). Vérifier que l'overhead de ces solutions est négligeable ou limité et qu'on ne met en péril la stabilité de l'application.
+* Les APM (Application Performance Monitoring) : outils qui injectent des sondes sans impact applicatifs, qui les collectent et les restituent (certains reconstituent même les chaînes de liaison complètes via des identifiants de corrélations injectés lors des appels distribués). Exemple : Oracle Enterprise Manager, Oracle Mission Control, Radware, BMC APM, Dynatrace , Pinpoint en OpenSource ...). Vérifier que l'overhead de ces solutions est négligeable ou limité et qu'on ne met pas en péril la stabilité de l'application.
 * La métrologie «maison» par logs si le besoin est modeste.
 * Les sites de requêtage externes (voir aussi les tests de vie en 12.7.6) qui appellent périodiquement l'application et produisent des dashboards. Ils ont l'avantage de prendre en compte les temps WAN non disponibles via les outils internes. A utiliser couplés aux tests de vie (voir plus loin).
 ====
@@ -1189,7 +1189,7 @@ Exemple : les performances du site seront supervisées en continu par `pingdom.c
 ====
 Ce chapitre permet de décrire une éventuelle migration depuis un ancien système. 
 
-Décrire de façon macroscopique la procédure envisagée ainsi que les retours arrières prévus.
+Décrire de façon macroscopique la procédure envisagée ainsi que les retours arrière prévus.
 
 Décrire éventuellement un fonctionnement 'à blanc' en parallèle de l'ancien système avant activation.
 ====
@@ -1208,7 +1208,7 @@ Ce chapitre sera instruit quand l’application arrive en fin de vie et devra ê
 
 * Les données à archiver ou au contraire à détruire avec un haut niveau de confiance.
 * Les composants physiques à évacuer ou à détruire.
-* Les procédures de désinstallation coté serveur et/ou client (il est courant de voir des composants obsolètes toujours s’exécuter sur des serveurs et occasionner des problèmes de performance et de sécurité passant sous le radar).
+* Les procédures de désinstallation côté serveur et/ou client (il est courant de voir des composants obsolètes toujours s’exécuter sur des serveurs et occasionner des problèmes de performance et de sécurité passant sous le radar).
 * Les contraintes de sécurité associées au décommissionnement (c’est une étape sensible souvent négligée, on peut retrouver par exemple des disques durs remplis de données très sensibles suite à un don de matériel).
 ====
 
