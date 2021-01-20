@@ -127,7 +127,7 @@ Il est crucial de récupérer un maximum d'informations issues de la production 
 
 [TIP]
 ====
-Les sections suivantes portant sur les calculs de volumétrie statiques et dynamiques donnent des exemples de calculs et d'élements à prendre en compte. Sur le plan de la forme, il peut être préférable de remplacer le texte par des feuilles de calculs dans un tableur. Pour un projet complexe ou aux hypothèses mouvantes, c'est indispensable.
+Les sections suivantes portant sur les calculs de volumétrie statiques et dynamiques donnent des exemples de calculs et d'éléments à prendre en compte. Sur le plan de la forme, il peut être préférable de remplacer le texte par des feuilles de calculs dans un tableur. Pour un projet complexe ou aux hypothèses mouvantes, c'est indispensable.
 
 ====
 
@@ -206,7 +206,7 @@ N'estimer que les données dont la taille est non négligeable (plusieurs centai
 
 === Volumétrie dynamique
 
-TIP: Il s'agit des métriques par durée (année, mois, heure,...) et permettant de déterminer la charge appliquée sur l'architecture, ce qui aidera à dimensionner les systèmes en terme de CPU, bande passante et performances des disques.  
+TIP: Il s'agit des métriques par durée (année, mois, heure,...) et permettant de déterminer la charge appliquée sur l'architecture, ce qui aidera à dimensionner les systèmes en termes de CPU, bande passante et performances des disques.  
 
 ==== Métriques
 
@@ -232,7 +232,7 @@ a|
 ====
 Il s'agit ici d'estimer le nombre d'appels aux composants et donc le débit cible (en TPS = Transactions par seconde) que devra absorber chacun d'entre eux. Un système bien dimensionné devra présenter des temps de réponse moyen du même ordre en charge nominale et en pic.
 
-Toujours estimer le "pic du pic", c'est à dire le moment où la charge sera maximale suite au cumul de tous les facteurs (par exemple pour un système de comptabilité : entre 14 et 15h  un jour de semaine de fin décembre). 
+Toujours estimer le "pic du pic", c'est-à-dire le moment où la charge sera maximale suite au cumul de tous les facteurs (par exemple pour un système de comptabilité : entre 14 et 15h  un jour de semaine de fin décembre). 
 
 Ne pas considérer que la charge est constante mais prendre en compte :
 
@@ -417,10 +417,10 @@ Voir le link:./volet-architecture-infrastructure.adoc#_déploiement_en_productio
 [TIP]
 ====
 
-Cette section fournit le dimensionnement final des machines necessaires
+Cette section fournit le dimensionnement final des machines nécessaires
 
 * Pour les VM, attention à vérifier qu'un VCPU = 1 cœur physique (et non un thread si hyperthreading activé)
-* Le disque interne concerne le disque necessaire à l'OS et aux binaires. Pour une machine physique, il s'agit de stockage local (disques locaux SDD, NMVe ou HDD). Pour une VM, il peut s'agir d'un disque local sur la machine physique executant la VM ou d'un SAN.
+* Le disque interne concerne le disque nécessaire à l'OS et aux binaires. Pour une machine physique, il s'agit de stockage local (disques locaux SDD, NMVe ou HDD). Pour une VM, il peut s'agir d'un disque local sur la machine physique exécutant la VM ou d'un SAN.
 * Le disque externe concerne du stockage sur une baie de disque (SAN) ou sur un filesystème distribué (NFS, CIFS, WebDav...)
 ====
 
